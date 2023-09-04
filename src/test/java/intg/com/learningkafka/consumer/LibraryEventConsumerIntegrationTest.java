@@ -1,4 +1,3 @@
-/*
 package com.learningkafka.consumer;
 
 import ch.qos.logback.core.net.SyslogOutputStream;
@@ -34,6 +33,7 @@ import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+/*
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @EmbeddedKafka(topics = "library-event",partitions = 3)
 @TestPropertySource(properties = {"spring.kafka.consumer.bootstrap-servers=${spring.embedded.kafka.brokers}","spring.kafka.producer.bootstrap-servers=${spring.embedded.kafka.brokers}"})
