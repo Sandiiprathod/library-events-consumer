@@ -1,0 +1,33 @@
+spring:
+  profiles:
+    active: local
+server:
+  port: 8082
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+  jpa:
+    database: H2
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: true
+  h2:
+    console:
+      enabled: true
+  kafka:
+    template:
+      default-topic: library-event
+    consumer:
+      bootstrap-serves: ${spring.embedded.kafka.brokers}
+      key-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: Library-events-group
+    producer:
+      bootstrap-servers:
+        - ${spring.embedded.kafka.brokers}
+      key-serializer: org.apache.kafka.common.serialization.IntegerSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
